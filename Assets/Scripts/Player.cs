@@ -1,11 +1,24 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float inputH;
+
+    [Header("Sistema de movimiento")]
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float fuerzaSalto;
+    [SerializeField] private Transform pies;
+    [SerializeField] private float distanciaDeteccionSuelo;
+    [SerializeField] private LayerMask queEsSaltable;
+    
+    [Header("Sistema de combate")]
+    [SerializeField] private Transform puntoAtaque;
+    [SerializeField] private float radioAtaque;
+    [SerializeField] private float danhoAtaque;
+    [SerializeField] private LayerMask queEsDanhable;
+
     private Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,10 +35,10 @@ public class Player : MonoBehaviour
 
         Saltar();
 
-        Atacar();
+        LanzarAtaque();
     }
 
-    private void Atacar()
+    private void LanzarAtaque()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -33,13 +46,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Se ejecuta desde Evento de Animación
+    private void Ataque()
+    {
+        // Lanzar trigger instantáneo
+        Collider2D[] collidersTocados = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, queEsDanhable);
+        foreach (Collider2D item in collidersTocados)
+        {
+            SistemaVidas sistemaVidasEnemigos = item.gameObject.GetComponent<SistemaVidas>();
+            sistemaVidasEnemigos.RecibirDanho(danhoAtaque);
+        }
+    }
+
     private void Saltar()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && EstoyEnSuelo())
         {
             rb.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
             anim.SetTrigger("jump");
         }
+    }
+
+    private bool EstoyEnSuelo()
+    {
+        Debug.DrawRay(pies.position, Vector3.down, Color.red, 0.3f);
+        return Physics2D.Raycast(pies.position, Vector3.down, distanciaDeteccionSuelo, queEsSaltable);
     }
 
     private void Movimiento()
@@ -63,5 +94,10 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("running", false);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(puntoAtaque.position, radioAtaque);
     }
 }

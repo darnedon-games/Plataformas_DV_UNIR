@@ -5,9 +5,10 @@ public class Slime : MonoBehaviour
 {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float velocidadPatrulla;
+    [SerializeField] private float danhoAtaque;
     private Vector3 destinoActual;
     private int indiceActual = 0;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -65,7 +66,8 @@ public class Slime : MonoBehaviour
         }
         else if (elOtro.gameObject.CompareTag("PlayerHitBox"))
         {
-            Debug.Log("Player atravesado");
+            SistemaVidas sistemaVidasPlayer = elOtro.gameObject.GetComponent<SistemaVidas>();
+            sistemaVidasPlayer.RecibirDanho(danhoAtaque);
         }
     }
 }

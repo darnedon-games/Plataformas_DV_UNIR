@@ -5,6 +5,7 @@ public class Bat : MonoBehaviour
 {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float velocidadPatrulla;
+    [SerializeField] private float danhoAtaque;
     private Vector3 destinoActual;
     private int indiceActual = 0;
 
@@ -65,7 +66,8 @@ public class Bat : MonoBehaviour
         }
         else if (elOtro.gameObject.CompareTag("PlayerHitBox"))
         {
-            Debug.Log("Player atravesado");
+            SistemaVidas sistemaVidasPlayer = elOtro.gameObject.GetComponent<SistemaVidas>();
+            sistemaVidasPlayer.RecibirDanho(danhoAtaque);
         }
     }
 }
