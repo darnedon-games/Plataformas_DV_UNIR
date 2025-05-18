@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slime : MonoBehaviour
 {
@@ -8,12 +9,16 @@ public class Slime : MonoBehaviour
     [SerializeField] private float danhoAtaque;
     private Vector3 destinoActual;
     private int indiceActual = 0;
-    
+
+    private Image barraVidaPlayer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         destinoActual = waypoints[indiceActual].position;
         StartCoroutine(Patrulla());
+
+        barraVidaPlayer = GameObject.Find("Canvas/InfoPlayer/Vidas/BarraVida").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -68,6 +73,9 @@ public class Slime : MonoBehaviour
         {
             SistemaVidas sistemaVidasPlayer = elOtro.gameObject.GetComponent<SistemaVidas>();
             sistemaVidasPlayer.RecibirDanho(danhoAtaque);
+
+            // Reducimos también la barra de vida del Player de la UI
+            barraVidaPlayer.fillAmount = (float)(barraVidaPlayer.fillAmount - (danhoAtaque * 0.01));
         }
     }
 }

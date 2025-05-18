@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerHitBox
   - DeteccionPlayer
+  - Gema
+  - FinMapa
   layers:
   - Default
   - TransparentFX

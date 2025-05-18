@@ -1,5 +1,7 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +21,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float danhoAtaque;
     [SerializeField] private LayerMask queEsDanhable;
 
+    [SerializeField] private TextMeshProUGUI textoGemas;
+    private int contadorGemas = 0;
+
+    private Image barraVidaPlayer;
+
     private Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +33,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        barraVidaPlayer = GameObject.Find("Canvas/InfoPlayer/Vidas/BarraVida").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -93,6 +102,22 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool("running", false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D elOtro)
+    {
+        if (elOtro.gameObject.CompareTag("Gema"))
+        {
+            contadorGemas += 1;
+            textoGemas.text = contadorGemas + "/10";
+            Destroy(elOtro.gameObject);
+        }
+        else if (elOtro.gameObject.CompareTag("FinMapa"))
+        {
+            // Jugador se cae al vacío
+            barraVidaPlayer.fillAmount = 0;
+            Destroy(this.gameObject);
         }
     }
 
