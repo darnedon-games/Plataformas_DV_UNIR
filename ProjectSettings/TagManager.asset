@@ -10,6 +10,7 @@ TagManager:
   - FinMapa
   - Colisiones
   - BossZone
+  - Boss
   layers:
   - Default
   - TransparentFX

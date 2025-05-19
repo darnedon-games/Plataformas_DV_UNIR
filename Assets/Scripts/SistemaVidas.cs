@@ -8,6 +8,7 @@ public class SistemaVidas : MonoBehaviour
     [SerializeField] private float vidas;
 
     [SerializeField] private Image barraVidaPlayer;
+    [SerializeField] private Image barraVidaBoss;
 
     private SpriteRenderer spriteRenderer;
     private Color colorParpadeo = Color.red;
@@ -30,6 +31,12 @@ public class SistemaVidas : MonoBehaviour
         // Reducimos también la barra de vida del Player de la UI
         if (this.gameObject.CompareTag("PlayerHitBox")){
             barraVidaPlayer.fillAmount = (float)(barraVidaPlayer.fillAmount - (danhoRecibido * 0.01));
+        }
+
+        // Reducimos también la barra de vida del Boss de la UI
+        if (this.gameObject.CompareTag("Boss"))
+        {
+            barraVidaBoss.fillAmount = (float)(barraVidaBoss.fillAmount - (danhoRecibido * 0.005));
         }
 
         if (vidas <= 0) {

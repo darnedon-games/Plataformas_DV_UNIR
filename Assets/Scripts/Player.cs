@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
 
     private Image barraVidaPlayer;
 
+    [SerializeField] private GameObject infoBoss;
+
     private Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -115,7 +117,7 @@ public class Player : MonoBehaviour
         }
         else if (elOtro.gameObject.CompareTag("BossZone"))
         {
-            Debug.Log("ENTRO en la zona del boss!");
+            infoBoss.SetActive(true);
         }
         else if (elOtro.gameObject.CompareTag("FinMapa"))
         {
@@ -129,7 +131,7 @@ public class Player : MonoBehaviour
     {
         if (elOtro.gameObject.CompareTag("BossZone"))
         {
-            Debug.Log("SALGO de la zona del boss!");
+            infoBoss.SetActive(false);
         }
     }
 
