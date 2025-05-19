@@ -9,6 +9,7 @@ TagManager:
   - Gema
   - FinMapa
   - Colisiones
+  - BossZone
   layers:
   - Default
   - TransparentFX

@@ -113,11 +113,23 @@ public class Player : MonoBehaviour
             textoGemas.text = contadorGemas + "/10";
             Destroy(elOtro.gameObject);
         }
+        else if (elOtro.gameObject.CompareTag("BossZone"))
+        {
+            Debug.Log("ENTRO en la zona del boss!");
+        }
         else if (elOtro.gameObject.CompareTag("FinMapa"))
         {
             // Jugador se cae al vacío
             barraVidaPlayer.fillAmount = 0;
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D elOtro)
+    {
+        if (elOtro.gameObject.CompareTag("BossZone"))
+        {
+            Debug.Log("SALGO de la zona del boss!");
         }
     }
 

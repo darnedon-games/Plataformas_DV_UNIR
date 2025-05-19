@@ -1,0 +1,88 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Windows;
+
+public class Boss : MonoBehaviour
+{
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private float velocidadPatrulla;
+    [SerializeField] private float danhoAtaque;
+    private Vector3 destinoActual;
+    private int indiceActual = 0;
+
+    private Animator anim;
+    
+    private Rigidbody2D rb;
+    private float inputH;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        destinoActual = waypoints[indiceActual].position;
+        StartCoroutine(Patrulla());
+
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    IEnumerator Patrulla()
+    {
+        while (true)
+        {
+            while (transform.position != destinoActual)
+            {
+                anim.SetBool("walking", true);
+                transform.position = Vector3.MoveTowards(transform.position, destinoActual, velocidadPatrulla * Time.deltaTime);
+                yield return null;
+            }
+            anim.SetBool("walking", false);
+            DefinirNuevoDestino();
+        }
+    }
+
+    private void DefinirNuevoDestino()
+    {
+        indiceActual++;
+        if (indiceActual >= waypoints.Length)
+        {
+            indiceActual = 0;
+        }
+        destinoActual = waypoints[indiceActual].position;
+        EnfocarDestino();
+    }
+
+    private void EnfocarDestino()
+    {
+        if (destinoActual.x > transform.position.x)
+        {
+            transform.localScale = Vector3.one;
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D elOtro)
+    {
+        if (elOtro.gameObject.CompareTag("DeteccionPlayer"))
+        {
+            Debug.Log("Player detectado");
+        }
+        else if (elOtro.gameObject.CompareTag("PlayerHitBox"))
+        {
+            SistemaVidas sistemaVidasPlayer = elOtro.gameObject.GetComponent<SistemaVidas>();
+            sistemaVidasPlayer.RecibirDanho(danhoAtaque);
+        }
+    }
+}
