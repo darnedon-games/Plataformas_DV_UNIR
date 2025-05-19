@@ -8,6 +8,7 @@ TagManager:
   - DeteccionPlayer
   - Gema
   - FinMapa
+  - Colisiones
   layers:
   - Default
   - TransparentFX

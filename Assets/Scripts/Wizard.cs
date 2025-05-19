@@ -1,13 +1,39 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Wizard : MonoBehaviour
 {
-    [SerializeField] private GameObject bolaFuego; // Prefab
+    [SerializeField] private BolaFuego bolaFuegoPrefab;
     [SerializeField] private Transform puntoSpawn;
     [SerializeField] private float tiempoAtaques;
     [SerializeField] private float danhoAtaque;
+
+    private ObjectPool<BolaFuego> bolaFuegoPool;
+
     private Animator anim;
+
+    private void Awake()
+    {
+        bolaFuegoPool = new ObjectPool<BolaFuego>(CrearBolaFuego, CogerBolaFuego, DejarBolaFuego);
+    }
+
+    private BolaFuego CrearBolaFuego()
+    {
+        BolaFuego copiaBolaFuego = Instantiate(bolaFuegoPrefab);
+        copiaBolaFuego.PoolBolaFuego = bolaFuegoPool;
+        return copiaBolaFuego;
+    }
+
+    private void CogerBolaFuego(BolaFuego bolaFuego)
+    {
+        bolaFuego.gameObject.SetActive(true);
+    }
+
+    private void DejarBolaFuego(BolaFuego bolaFuego)
+    {
+        bolaFuego.gameObject.SetActive(false);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +59,9 @@ public class Wizard : MonoBehaviour
 
     private void LanzarBola()
     {
-        Instantiate(bolaFuego, puntoSpawn.position, transform.rotation);
+        BolaFuego copia = bolaFuegoPool.Get();
+        copia.transform.position = puntoSpawn.position;
+        //copia.transform.rotation = transform.rotation;
+        //Instantiate(copia, puntoSpawn.position, transform.rotation);
     }
 }

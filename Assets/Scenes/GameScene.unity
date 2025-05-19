@@ -1341,7 +1341,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.2, y: -1.9, z: -10}
+  m_LocalPosition: {x: 12.4, y: -10.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1715,7 +1715,7 @@ Transform:
   m_GameObject: {fileID: 654903064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.2, y: -1.9, z: 0}
+  m_LocalPosition: {x: 12.4, y: -10.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1827,6 +1827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidas: 100
+  barraVidaPlayer: {fileID: 1355552160}
 --- !u!1 &683032203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,7 +2098,7 @@ GameObject:
   - component: {fileID: 816502309}
   m_Layer: 8
   m_Name: Colisiones
-  m_TagString: Untagged
+  m_TagString: Colisiones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24186,6 +24187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidas: 40
+  barraVidaPlayer: {fileID: 0}
 --- !u!1001 &872437560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24998,6 +25000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidas: 20
+  barraVidaPlayer: {fileID: 0}
 --- !u!1 &1203148703
 GameObject:
   m_ObjectHideFlags: 0
@@ -53310,7 +53313,7 @@ Transform:
   m_GameObject: {fileID: 1608145356}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.2, y: -1.9, z: -10}
+  m_LocalPosition: {x: 12.4, y: -10.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54088,7 +54091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1987268220
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54248,7 +54251,7 @@ Transform:
   m_GameObject: {fileID: 1987268219}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.05, y: -10.641, z: 0}
+  m_LocalPosition: {x: -3.97, y: -10.641, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54268,7 +54271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b078f2681b2803346a1ad39fe434101f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bolaFuego: {fileID: 3691648878278006457, guid: 72d6fe491b966544aab5abe83a7b567a, type: 3}
+  bolaFuegoPrefab: {fileID: -6245862838762232297, guid: 72d6fe491b966544aab5abe83a7b567a, type: 3}
   puntoSpawn: {fileID: 379924042}
   tiempoAtaques: 2
   danhoAtaque: 20
@@ -54285,6 +54288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidas: 60
+  barraVidaPlayer: {fileID: 0}
 --- !u!4 &2000936302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1409802550134157825, guid: 2babfca420a7e4349b0b00384b313781, type: 3}
