@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SistemaVidas : MonoBehaviour
 {
     [SerializeField] private float vidas;
+    public float Vidas { get => vidas;} // Se encapsula para poder acceder desde Script/Clase Boss
 
     [SerializeField] private Image barraVidaPlayer;
     [SerializeField] private Image barraVidaBoss;
@@ -16,10 +17,17 @@ public class SistemaVidas : MonoBehaviour
     private int numParpadeos = 3;
     private Color colorOriginal;
 
+    [SerializeField] Boss boss;
+    private Animator animBoss;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         colorOriginal = spriteRenderer.color;
+
+        if (boss != null) { 
+            animBoss = boss.GetComponent<Animator>();
+        }
     }
 
     public void RecibirDanho(float danhoRecibido)
@@ -40,8 +48,22 @@ public class SistemaVidas : MonoBehaviour
         }
 
         if (vidas <= 0) {
-            Destroy(this.gameObject);
+            if (this.gameObject.CompareTag("Boss"))
+            {
+                StartCoroutine(DestruirBossConDelay()); // Para que de tiempo a la anim de muerte del Boss
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    IEnumerator DestruirBossConDelay()
+    {
+        animBoss.SetTrigger("death");
+        yield return new WaitForSeconds(2f);
+        Destroy(this.gameObject);
     }
 
     private void IniciarParpadeo()

@@ -4,16 +4,20 @@ using UnityEngine.Windows;
 
 public class Boss : MonoBehaviour
 {
+    [Header("Sistema de movimiento")]
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float velocidadPatrulla;
+    
+    [Header("Sistema de combate")]
+    [SerializeField] private Transform puntoAtaque;
+    [SerializeField] private float radioAtaque;
     [SerializeField] private float danhoAtaque;
+    [SerializeField] private LayerMask queEsDanhable;
+
     private Vector3 destinoActual;
     private int indiceActual = 0;
 
     private Animator anim;
-    
-    private Rigidbody2D rb;
-    private float inputH;
 
     private void Awake()
     {
@@ -25,8 +29,6 @@ public class Boss : MonoBehaviour
     {
         destinoActual = waypoints[indiceActual].position;
         StartCoroutine(Patrulla());
-
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,34 @@ public class Boss : MonoBehaviour
     {
 
     }
+
+    private void LanzarAtaque()
+    {
+        anim.SetTrigger("attack");
+    }
+
+    private void Ataque()
+    {
+        // Lanzar trigger instantáneo
+        Collider2D[] collidersTocados = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, queEsDanhable);
+        foreach (Collider2D item in collidersTocados)
+        {
+            SistemaVidas sistemaVidas = item.gameObject.GetComponent<SistemaVidas>();
+            sistemaVidas.RecibirDanho(danhoAtaque);
+        }
+    }
+
+    // Se ejecuta desde Evento de Animación
+    //private void Ataque()
+    //{
+    //    // Lanzar trigger instantáneo
+    //    Collider2D[] collidersTocados = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, queEsDanhable);
+    //    foreach (Collider2D item in collidersTocados)
+    //    {
+    //        SistemaVidas sistemaVidasEnemigos = item.gameObject.GetComponent<SistemaVidas>();
+    //        sistemaVidasEnemigos.RecibirDanho(danhoAtaque);
+    //    }
+    //}
 
     IEnumerator Patrulla()
     {
@@ -45,8 +75,9 @@ public class Boss : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, destinoActual, velocidadPatrulla * Time.deltaTime);
                 yield return null;
             }
-            anim.SetBool("walking", false);
+            //anim.SetBool("walking", false);
             DefinirNuevoDestino();
+            LanzarAtaque();
         }
     }
 
@@ -85,4 +116,10 @@ public class Boss : MonoBehaviour
             sistemaVidasPlayer.RecibirDanho(danhoAtaque);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(puntoAtaque.position, radioAtaque);
+    }
+
 }

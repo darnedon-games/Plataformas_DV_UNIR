@@ -833,6 +833,8 @@ Transform:
   m_Children:
   - {fileID: 380579135}
   - {fileID: 1660434169}
+  - {fileID: 1799256821}
+  - {fileID: 1326709277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &365346719
@@ -1504,6 +1506,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &507241393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507241394}
+  m_Layer: 0
+  m_Name: PuntoAtaque
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &507241394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507241393}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -2.3460007, y: -0.617, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1204769145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1669,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.75, y: 2.1, z: -10}
+  m_LocalPosition: {x: 92.08, y: 2.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2010,7 +2043,7 @@ Transform:
   m_GameObject: {fileID: 654903064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.75, y: 2.1, z: 0}
+  m_LocalPosition: {x: 92.08, y: 2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2125,6 +2158,7 @@ MonoBehaviour:
   vidas: 100
   barraVidaPlayer: {fileID: 1355552160}
   barraVidaBoss: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!1 &683032203
 GameObject:
   m_ObjectHideFlags: 0
@@ -24622,6 +24656,7 @@ MonoBehaviour:
   vidas: 40
   barraVidaPlayer: {fileID: 0}
   barraVidaBoss: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!1 &863596142
 GameObject:
   m_ObjectHideFlags: 0
@@ -25586,6 +25621,7 @@ MonoBehaviour:
   vidas: 20
   barraVidaPlayer: {fileID: 0}
   barraVidaBoss: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!1 &1203148703
 GameObject:
   m_ObjectHideFlags: 0
@@ -25761,7 +25797,8 @@ Transform:
   m_LocalPosition: {x: 121.13, y: 2.257, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 507241394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!61 &1204769146
@@ -25847,8 +25884,15 @@ MonoBehaviour:
   waypoints:
   - {fileID: 380579135}
   - {fileID: 1660434169}
-  velocidadPatrulla: 2
+  - {fileID: 1799256821}
+  - {fileID: 1326709277}
+  velocidadPatrulla: 4
+  puntoAtaque: {fileID: 507241394}
+  radioAtaque: 0.8
   danhoAtaque: 20
+  queEsDanhable:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1204769149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25864,6 +25908,7 @@ MonoBehaviour:
   vidas: 200
   barraVidaPlayer: {fileID: 0}
   barraVidaBoss: {fileID: 863596144}
+  boss: {fileID: 1204769148}
 --- !u!1001 &1239675330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26198,6 +26243,37 @@ Transform:
   - {fileID: 847931870}
   - {fileID: 711587975}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1326709276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326709277}
+  m_Layer: 0
+  m_Name: PuntoD
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1326709277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326709276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.89, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 346812732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355552158
 GameObject:
@@ -54129,7 +54205,7 @@ Transform:
   m_GameObject: {fileID: 1608145356}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.75, y: 2.1, z: -10}
+  m_LocalPosition: {x: 92.08, y: 2.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54286,7 +54362,7 @@ Transform:
   m_GameObject: {fileID: 1660434168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.53, y: 0, z: 0}
+  m_LocalPosition: {x: -5.39, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54892,6 +54968,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 245840996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1799256820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1799256821}
+  m_Layer: 0
+  m_Name: PuntoC
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1799256821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799256820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.85, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 346812732}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1800438160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1409802550134157825, guid: 2babfca420a7e4349b0b00384b313781, type: 3}
@@ -55213,6 +55320,7 @@ MonoBehaviour:
   vidas: 60
   barraVidaPlayer: {fileID: 0}
   barraVidaBoss: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!4 &2000936302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1409802550134157825, guid: 2babfca420a7e4349b0b00384b313781, type: 3}
