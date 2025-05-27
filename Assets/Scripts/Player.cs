@@ -20,18 +20,23 @@ public class Player : MonoBehaviour
     [SerializeField] private float radioAtaque;
     [SerializeField] private float danhoAtaque;
     [SerializeField] private LayerMask queEsDanhable;
-
-    [SerializeField] private TextMeshProUGUI textoGemas;
+    
     private int contadorGemas = 0;
 
     private Image barraVidaPlayer;
 
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI textoGemas;
     [SerializeField] private GameObject infoBoss;
-
     [SerializeField] private GameObject pauseCanvas;
     [SerializeField] private GameObject gameOverCanvas;
 
+    [Header("Music")]
+    [SerializeField] private AudioClip sonidoAtaque;
+    [SerializeField] private AudioClip sonidoGemas;
+
     private AudioSource music;
+    private AudioSource sound;
 
     private Animator anim;
 
@@ -44,6 +49,7 @@ public class Player : MonoBehaviour
         barraVidaPlayer = GameObject.Find("Canvas/InfoPlayer/Vidas/BarraVida").GetComponent<Image>();
 
         music = GameObject.Find("Music").GetComponent<AudioSource>();
+        sound = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -68,6 +74,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetTrigger("attack");
+            sound.PlayOneShot(sonidoAtaque, 0.6f);
         }
     }
 
@@ -128,6 +135,7 @@ public class Player : MonoBehaviour
             contadorGemas += 1;
             textoGemas.text = contadorGemas + "/10";
             Destroy(elOtro.gameObject);
+            sound.PlayOneShot(sonidoGemas, 0.8f);
         }
         else if (elOtro.gameObject.CompareTag("BossZone"))
         {

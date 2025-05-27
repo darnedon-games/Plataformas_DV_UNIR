@@ -22,6 +22,9 @@ public class SistemaVidas : MonoBehaviour
     private GameObject gameOverCanvas;
     private GameObject winCanvas;
 
+    [SerializeField] private AudioClip sonidoDanho;
+    
+    private AudioSource sound;
     private AudioSource music;
 
     private Animator animBoss;
@@ -39,11 +42,14 @@ public class SistemaVidas : MonoBehaviour
         winCanvas = GameObject.Find("CanvasWin");
 
         music = GameObject.Find("Music").GetComponent<AudioSource>();
+        sound = this.GetComponent<AudioSource>();
     }
 
     public void RecibirDanho(float danhoRecibido)
     {
         IniciarParpadeo();
+
+        sound.PlayOneShot(sonidoDanho, 0.6f);
 
         vidas -= danhoRecibido;
 
