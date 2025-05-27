@@ -1,5 +1,6 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -12,6 +13,8 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadGameScene()
     {
+        Time.timeScale = 1f; // Se reanuda el juego
+        music.UnPause();// Se reanuda la música
         SceneManager.LoadScene("GameScene");
     }
     public void LoadMenuScene()
@@ -29,6 +32,7 @@ public class SceneLoader : MonoBehaviour
         this.gameObject.SetActive(false);
         Time.timeScale = 1f; // Se reanuda el juego
         music.UnPause();// Se reanuda la música
+        EventSystem.current.SetSelectedGameObject(null); // Se limpia la selección del botón para que no quede en estado "Pressed"
     }
     public void ExitGame()
     {

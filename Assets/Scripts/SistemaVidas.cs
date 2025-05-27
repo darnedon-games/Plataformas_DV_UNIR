@@ -18,6 +18,12 @@ public class SistemaVidas : MonoBehaviour
     private Color colorOriginal;
 
     [SerializeField] Boss boss;
+
+    private GameObject gameOverCanvas;
+    private GameObject winCanvas;
+
+    private AudioSource music;
+
     private Animator animBoss;
 
     private void Start()
@@ -28,6 +34,11 @@ public class SistemaVidas : MonoBehaviour
         if (boss != null) { 
             animBoss = boss.GetComponent<Animator>();
         }
+
+        gameOverCanvas = GameObject.Find("CanvasGameOver");
+        winCanvas = GameObject.Find("CanvasWin");
+
+        music = GameObject.Find("Music").GetComponent<AudioSource>();
     }
 
     public void RecibirDanho(float danhoRecibido)
@@ -52,6 +63,11 @@ public class SistemaVidas : MonoBehaviour
             {
                 StartCoroutine(DestruirBossConDelay()); // Para que de tiempo a la anim de muerte del Boss
             }
+            else if (this.gameObject.CompareTag("PlayerHitBox"))
+            {
+                gameOverCanvas.transform.Find("Panel").gameObject.SetActive(true);
+                Destroy(this.gameObject);
+            }
             else
             {
                 Destroy(this.gameObject);
@@ -64,6 +80,7 @@ public class SistemaVidas : MonoBehaviour
         animBoss.SetTrigger("death");
         yield return new WaitForSeconds(2f);
         Destroy(this.gameObject);
+        winCanvas.transform.Find("Panel").gameObject.SetActive(true); // Se muestra pantalla de victoria
     }
 
     private void IniciarParpadeo()

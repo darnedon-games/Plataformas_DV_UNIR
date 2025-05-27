@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject infoBoss;
 
+    [SerializeField] private GameObject pauseCanvas;
+    [SerializeField] private GameObject gameOverCanvas;
+
+    private AudioSource music;
+
     private Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,6 +42,8 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
 
         barraVidaPlayer = GameObject.Find("Canvas/InfoPlayer/Vidas/BarraVida").GetComponent<Image>();
+
+        music = GameObject.Find("Music").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,6 +54,13 @@ public class Player : MonoBehaviour
         Saltar();
 
         LanzarAtaque();
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            pauseCanvas.SetActive(true);
+            Time.timeScale = 0f; // Se pausa el juego
+            music.Pause();// Se pausa la música
+        }
     }
 
     private void LanzarAtaque()
@@ -123,6 +137,7 @@ public class Player : MonoBehaviour
         {
             // Jugador se cae al vacío
             barraVidaPlayer.fillAmount = 0;
+            gameOverCanvas.transform.Find("Panel").gameObject.SetActive(true);
             Destroy(this.gameObject);
         }
     }
@@ -131,7 +146,10 @@ public class Player : MonoBehaviour
     {
         if (elOtro.gameObject.CompareTag("BossZone"))
         {
-            infoBoss.SetActive(false);
+            if (infoBoss != null)
+            {
+                infoBoss.SetActive(false);
+            }
         }
     }
 
