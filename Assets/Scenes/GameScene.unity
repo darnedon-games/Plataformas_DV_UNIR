@@ -392,6 +392,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2947264388713654352, guid: caa050b3d4f0079499500fdcaed247a1, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3993941326061673470, guid: caa050b3d4f0079499500fdcaed247a1, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.68
@@ -1204,6 +1208,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80403026}
     m_Modifications:
+    - target: {fileID: 2035838655042547314, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5556843952493746321, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
       propertyPath: m_Name
       value: SlimeEnemy (7)
@@ -2177,6 +2185,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80403026}
     m_Modifications:
+    - target: {fileID: 2035838655042547314, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5556843952493746321, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
       propertyPath: m_Name
       value: SlimeEnemy (1)
@@ -3165,6 +3177,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80403026}
     m_Modifications:
+    - target: {fileID: 2035838655042547314, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5556843952493746321, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
       propertyPath: m_Name
       value: SlimeEnemy (4)
@@ -27775,6 +27791,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 7.79
       objectReference: {fileID: 0}
+    - target: {fileID: 2035838655042547314, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5556843952493746321, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
       propertyPath: m_Name
       value: SlimeEnemy (3)
@@ -29050,6 +29070,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80403026}
     m_Modifications:
+    - target: {fileID: 2035838655042547314, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5556843952493746321, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
       propertyPath: m_Name
       value: SlimeEnemy (8)
@@ -57103,6 +57127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2947264388713654352, guid: caa050b3d4f0079499500fdcaed247a1, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3993941326061673470, guid: caa050b3d4f0079499500fdcaed247a1, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.48
@@ -57817,6 +57845,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80403026}
     m_Modifications:
+    - target: {fileID: 2035838655042547314, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5556843952493746321, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
       propertyPath: m_Name
       value: SlimeEnemy (6)
@@ -58257,6 +58289,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80403026}
     m_Modifications:
+    - target: {fileID: 2035838655042547314, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5556843952493746321, guid: 08dcd010a73cb58458bdcdcb1869ed2a, type: 3}
       propertyPath: m_Name
       value: SlimeEnemy (5)
@@ -59624,6 +59660,10 @@ PrefabInstance:
     - target: {fileID: 1088629597488522465, guid: caa050b3d4f0079499500fdcaed247a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947264388713654352, guid: caa050b3d4f0079499500fdcaed247a1, type: 3}
+      propertyPath: velocidadPatrulla
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3993941326061673470, guid: caa050b3d4f0079499500fdcaed247a1, type: 3}
       propertyPath: m_LocalPosition.x
