@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8693b0439237b734eba74af6a9341497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 20
+  vidas: 40
   barraVidaPlayer: {fileID: 0}
   barraVidaBoss: {fileID: 0}
   boss: {fileID: 0}
