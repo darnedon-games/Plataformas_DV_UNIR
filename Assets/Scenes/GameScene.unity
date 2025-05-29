@@ -58827,6 +58827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempoJuego: {fileID: 2130533216}
+  player: {fileID: 654903070}
+  boss: {fileID: 1204769148}
 --- !u!1001 &1771096091
 PrefabInstance:
   m_ObjectHideFlags: 0
